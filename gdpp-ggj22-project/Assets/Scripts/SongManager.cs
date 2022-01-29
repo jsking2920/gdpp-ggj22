@@ -25,10 +25,12 @@ public class SongManager : MonoBehaviour
     private int nextIndex2 = 0;
     public float notesShownInAdvance;
 
-    public Transform track1Start;
-    public Transform track1End;
-    public Transform track2Start;
-    public Transform track2End;
+    public Transform track1StartMarker;
+    public Transform track1ButtonMarker;
+    public Transform track1EndMarker;
+    public Transform track2StartMarker;
+    public Transform track2ButtonMarker;
+    public Transform track2EndMarker;
 
     private bool songPlaying = false;
 
@@ -56,9 +58,9 @@ public class SongManager : MonoBehaviour
         {
             UpdatePosition();
             if (nextIndex1 < numNotes1 && track1Notes[nextIndex1] < songPosInBeats + notesShownInAdvance) 
-                SpawnNote(track1Notes, track1Start, track1End, ref nextIndex1);
+                SpawnNote(track1Notes, track1StartMarker, track1ButtonMarker, track1EndMarker, ref nextIndex1);
             if (nextIndex2 < numNotes2 && track2Notes[nextIndex2] < songPosInBeats + notesShownInAdvance)
-                SpawnNote(track2Notes, track2Start, track2End, ref nextIndex2);
+                SpawnNote(track2Notes, track2StartMarker, track2ButtonMarker, track2EndMarker, ref nextIndex2);
         }
     }
 
@@ -77,12 +79,13 @@ public class SongManager : MonoBehaviour
         songPosInBeats = songPosInSecs / secPerBeat;
     }
 
-    private void SpawnNote(float[] notes, Transform start, Transform end, ref int index)
+    private void SpawnNote(float[] notes, Transform start, Transform button, Transform end, ref int index)
     {
-        MusicNote note = Instantiate(notePrefab, track1Start.position, Quaternion.identity).GetComponent<MusicNote>();
+        MusicNote note = Instantiate(notePrefab, start.position, Quaternion.identity).GetComponent<MusicNote>();
         note.beatOfThisNote = notes[index];
         note.startPos = start.position;
-        note.endPos = end.position;
+        note.buttonPos = button.position;
+        note.removePos = end.position;
         index++;
     }
 }

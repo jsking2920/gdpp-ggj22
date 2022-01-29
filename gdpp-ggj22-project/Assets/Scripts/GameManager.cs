@@ -11,11 +11,13 @@ public class GameManager : MonoBehaviour
 
     public GameState gameState;
     private int notesPlayed;
+    private int notesMissed;
 
     [SerializeField] private ButtonController[] buttons;
 
     [SerializeField] private GameObject startButton;
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI missedNotesText;
 
     void Awake()
     {
@@ -27,7 +29,9 @@ public class GameManager : MonoBehaviour
     {
         gameState = GameState.ready;
         scoreText.text = "Notes: 0";
+        missedNotesText.text = "Misssed: 0";
         notesPlayed = 0;
+        notesMissed = 0;
     }
 
     void Update()
@@ -64,5 +68,11 @@ public class GameManager : MonoBehaviour
     {
         notesPlayed++;
         scoreText.text = "Notes: " + notesPlayed;
+    }
+
+    public void MissedNote()
+    {
+        notesMissed++;
+        missedNotesText.text = "Notes Missed: " + notesMissed;
     }
 }

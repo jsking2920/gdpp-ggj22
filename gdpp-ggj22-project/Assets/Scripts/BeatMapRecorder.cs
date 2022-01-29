@@ -60,7 +60,6 @@ public class BeatMapRecorder : MonoBehaviour
             if (Input.GetKeyDown(button.keyMapping))
             {
                 RecordInput(SongManager.S.songPosInBeats, button.trackID);
-                Debug.Log(SongManager.S.songPosInBeats);
             }
         }
     }
