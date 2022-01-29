@@ -1,35 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &23867703636832458
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2966761612655899257}
-  m_Layer: 0
-  m_Name: ButtonMarker
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2966761612655899257
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 23867703636832458}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6, y: 5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2397874961443804907}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2397874961327005161
 GameObject:
   m_ObjectHideFlags: 0
@@ -54,11 +24,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2397874961327005161}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -24, y: 5, z: 0}
+  m_LocalPosition: {x: -10, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2397874961443804907}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2397874961443804906
 GameObject:
@@ -84,11 +54,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2397874961443804906}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.19, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2397874962255276462}
-  - {fileID: 2966761612655899257}
   - {fileID: 2397874961327005162}
   - {fileID: 2544733584495868963}
   m_Father: {fileID: 0}
@@ -118,7 +87,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2397874962255276461}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10, y: 5, z: 0}
+  m_LocalPosition: {x: 10, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2397874961443804907}
@@ -133,15 +102,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 150381462082413410, guid: 19708a44b08aa064cb50261e840a5836, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 150381462082413410, guid: 19708a44b08aa064cb50261e840a5836, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 150381462082413410, guid: 19708a44b08aa064cb50261e840a5836, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 150381462082413410, guid: 19708a44b08aa064cb50261e840a5836, type: 3}
       propertyPath: m_LocalPosition.z
@@ -176,9 +145,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 150381462082413411, guid: 19708a44b08aa064cb50261e840a5836, type: 3}
-      propertyPath: keyMapping
-      value: 276
-      objectReference: {fileID: 0}
+      propertyPath: buttonPos
+      value: 
+      objectReference: {fileID: 606573511787851064}
     - target: {fileID: 150381462082413412, guid: 19708a44b08aa064cb50261e840a5836, type: 3}
       propertyPath: m_Name
       value: Button1
@@ -188,5 +157,10 @@ PrefabInstance:
 --- !u!4 &2544733584495868963 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 150381462082413410, guid: 19708a44b08aa064cb50261e840a5836, type: 3}
+  m_PrefabInstance: {fileID: 2397874962772270913}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &606573511787851064 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2966761612655899257, guid: 19708a44b08aa064cb50261e840a5836, type: 3}
   m_PrefabInstance: {fileID: 2397874962772270913}
   m_PrefabAsset: {fileID: 0}

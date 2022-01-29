@@ -17,12 +17,32 @@ public class ButtonController : MonoBehaviour
     // Each button should have a unique and unchanging id for recording purposes
     [Range(1,2)] public int trackID;
 
+    [SerializeField] private SpriteRenderer trackSR;
+    [SerializeField] private Transform startPos;
+    [SerializeField] private Transform buttonPos;
+    [SerializeField] private GameObject linePrefab;
+
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
         bc = GetComponent<BoxCollider2D>();
 
         contactFilter = contactFilter.NoFilter();
+
+        trackSR.transform.position = buttonPos.position;
+        SetupTrack();
+    }
+
+    private void SetupTrack()
+    {
+        trackSR.size = new Vector2(Mathf.Abs(trackSR.transform.position.x - startPos.position.x), 1);
+
+        float step = trackSR.size.x / SongManager.S.notesShownInAdvance;
+
+        for (int i = 1; i <= SongManager.S.notesShownInAdvance; i++)
+        {
+            Instantiate(linePrefab, new Vector2(startPos.position.x - (step * i), startPos.position.y), Quaternion.identity);
+        }
     }
 
     public void Pressed()

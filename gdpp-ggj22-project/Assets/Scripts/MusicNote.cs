@@ -14,7 +14,6 @@ public class MusicNote : MonoBehaviour
     private float notesShownInAdvance;
 
     private float missedNoteBufferInBeats = 0.25f;
-    private bool passedButtonPos = false;
     private bool firedMissedFunction = false;
 
     private void Start()
@@ -24,23 +23,14 @@ public class MusicNote : MonoBehaviour
 
     void Update()
     {
-        if (!passedButtonPos)
-        {
-            interpolationVal = (notesShownInAdvance - (beatOfThisNote - SongManager.S.songPosInBeats)) / notesShownInAdvance;
-            if (interpolationVal > 0.99f) 
-                passedButtonPos = true;
-            transform.position = Vector2.Lerp(startPos, buttonPos, interpolationVal);
-        }
-        else
-        {
-            if (!firedMissedFunction && beatOfThisNote - (SongManager.S.songPosInBeats - missedNoteBufferInBeats) < 0f) 
-                MissedNote();
+        // Track for notes is centered at the button, so this equals 0.5 on the notes beat, which means it's at the button
+        interpolationVal = ((notesShownInAdvance - (beatOfThisNote - SongManager.S.songPosInBeats)) / notesShownInAdvance) * 0.5f;
+        transform.position = Vector2.Lerp(startPos, removePos, interpolationVal);
 
-            interpolationVal = (notesShownInAdvance - ((beatOfThisNote + notesShownInAdvance) - SongManager.S.songPosInBeats)) / notesShownInAdvance;
-            if (interpolationVal > 0.4f) 
-                Destroy(gameObject);
-            transform.position = Vector2.Lerp(buttonPos, removePos, interpolationVal);
-        }
+        if (!firedMissedFunction && beatOfThisNote - (SongManager.S.songPosInBeats - missedNoteBufferInBeats) < 0f)
+            MissedNote();
+        if (interpolationVal > 0.6f)
+            Destroy(gameObject);
     }
 
     private void MissedNote()

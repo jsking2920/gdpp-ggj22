@@ -49,3 +49,5 @@ MonoBehaviour:
   - {fileID: 0}
   startButton: {fileID: 0}
   scoreText: {fileID: 0}
+  missedNotesText: {fileID: 0}
+  defaultBeatMap: {fileID: 11400000, guid: 2d6c416f0f3e98a4598387cc5ab6df6d, type: 2}
