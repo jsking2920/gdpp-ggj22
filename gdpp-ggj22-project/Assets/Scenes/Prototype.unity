@@ -422,6 +422,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2042298225}
     m_Modifications:
+    - target: {fileID: 2397874961327005162, guid: cd3d5d250cb92374c9fa4ce2cb6da970, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6
+      objectReference: {fileID: 0}
     - target: {fileID: 2397874961443804906, guid: cd3d5d250cb92374c9fa4ce2cb6da970, type: 3}
       propertyPath: m_Name
       value: Track2
@@ -2554,6 +2558,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2042298225}
     m_Modifications:
+    - target: {fileID: 2397874961327005162, guid: cd3d5d250cb92374c9fa4ce2cb6da970, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.16
+      objectReference: {fileID: 0}
     - target: {fileID: 2397874961443804906, guid: cd3d5d250cb92374c9fa4ce2cb6da970, type: 3}
       propertyPath: m_Name
       value: Track1
@@ -2670,7 +2678,7 @@ PrefabInstance:
     - target: {fileID: 6290110705019140659, guid: 14e22e39ac58dbb45a25ee286dcbd045, type: 3}
       propertyPath: beatMap
       value: 
-      objectReference: {fileID: 11400000, guid: 4ddd3376b3f318742a360fd802d2657c, type: 2}
+      objectReference: {fileID: 11400000, guid: 2d6c416f0f3e98a4598387cc5ab6df6d, type: 2}
     - target: {fileID: 6290110705019140659, guid: 14e22e39ac58dbb45a25ee286dcbd045, type: 3}
       propertyPath: track1End
       value: 
@@ -2749,9 +2757,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9140352133180373467, guid: 99107b711d09e7e4fa9278ade44ff56c, type: 3}
+      propertyPath: songName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140352133180373467, guid: 99107b711d09e7e4fa9278ade44ff56c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140352133180373467, guid: 99107b711d09e7e4fa9278ade44ff56c, type: 3}
       propertyPath: quantizeEigth
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9140352133180373467, guid: 99107b711d09e7e4fa9278ade44ff56c, type: 3}
+      propertyPath: targetBeatMap
+      value: 
+      objectReference: {fileID: 11400000, guid: 2d6c416f0f3e98a4598387cc5ab6df6d, type: 2}
     - target: {fileID: 9140352133180373467, guid: 99107b711d09e7e4fa9278ade44ff56c, type: 3}
       propertyPath: buttons.Array.data[0]
       value: 
@@ -2763,6 +2783,10 @@ PrefabInstance:
     - target: {fileID: 9140352133180373476, guid: 99107b711d09e7e4fa9278ade44ff56c, type: 3}
       propertyPath: m_Name
       value: BeatMapRecorder
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140352133180373476, guid: 99107b711d09e7e4fa9278ade44ff56c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99107b711d09e7e4fa9278ade44ff56c, type: 3}

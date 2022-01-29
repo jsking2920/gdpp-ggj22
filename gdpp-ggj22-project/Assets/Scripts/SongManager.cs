@@ -65,6 +65,8 @@ public class SongManager : MonoBehaviour
     public void StartSong()
     {
         songStartTime = (float)AudioSettings.dspTime;
+        songPosInBeats = 0f;
+        songPosInSecs = 0f;
         songSource.Play();
         songPlaying = true;
     }

@@ -36,6 +36,11 @@ public class BeatMapRecorder : MonoBehaviour
             AssetDatabase.CreateAsset(targetBeatMap, "Assets/BeatMaps/" + songName + "Map.asset");
             AssetDatabase.SaveAssets();
         }
+        else
+        {
+            targetBeatMap.track1Notes.Clear();
+            targetBeatMap.track2Notes.Clear();
+        }
         targetBeatMap.song = song;
         targetBeatMap.bpm = bpm;
     }
@@ -55,19 +60,20 @@ public class BeatMapRecorder : MonoBehaviour
             if (Input.GetKeyDown(button.keyMapping))
             {
                 RecordInput(SongManager.S.songPosInBeats, button.trackID);
+                Debug.Log(SongManager.S.songPosInBeats);
             }
         }
     }
 
-    public void RecordInput(float beat, int trackNumber)
+    public void RecordInput(float rawBeat, int trackNumber)
     {
         switch (trackNumber)
         {
             case 1:
-                targetBeatMap.track1Notes.Add(Quantize(beat));
+                targetBeatMap.track1Notes.Add(Quantize(rawBeat));
                 break;
             case 2:
-                targetBeatMap.track2Notes.Add(Quantize(beat));
+                targetBeatMap.track2Notes.Add(Quantize(rawBeat));
                 break;
         }
     }
@@ -78,7 +84,7 @@ public class BeatMapRecorder : MonoBehaviour
         {
             return Mathf.Round(rawInputBeat * 2f) * 0.5f;
         }
-        if (quantizeTriplet)
+        else if (quantizeTriplet)
         {
             return Mathf.Round(rawInputBeat * 3f) * (1f / 3f);
         }
