@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI missedNotesText;
 
+    [SerializeField] private BeatMap defaultBeatMap;
+
     void Awake()
     {
         if (S) Destroy(S.gameObject);
@@ -33,6 +35,7 @@ public class GameManager : MonoBehaviour
         notesPlayed = 0;
         notesMissed = 0;
         if (MenuManager.S) SongManager.S.SetupBeatMap(MenuManager.S.selectedBeatMap);
+        else SongManager.S.SetupBeatMap(defaultBeatMap);
         gameState = GameState.ready;
     }
 

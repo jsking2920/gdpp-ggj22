@@ -33,20 +33,10 @@ public class SongManager : MonoBehaviour
 
     private bool songPlaying = false;
 
-    [SerializeField] BeatMap mapForRecording;
-
     private void Awake()
     {
         if (S) Destroy(S.gameObject);
         S = this;
-    }
-
-    void Start()
-    {
-        if (!MenuManager.S)
-        {
-            SetupBeatMap(mapForRecording);
-        }
     }
 
     void Update()
