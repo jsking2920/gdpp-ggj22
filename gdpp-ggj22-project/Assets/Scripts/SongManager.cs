@@ -7,7 +7,6 @@ public class SongManager : MonoBehaviour
 {
     public static SongManager S;
 
-    [SerializeField] private BeatMap beatMap;
     [SerializeField] private AudioSource songSource;
     [SerializeField] private GameObject notePrefab;
 
@@ -34,6 +33,8 @@ public class SongManager : MonoBehaviour
 
     private bool songPlaying = false;
 
+    [SerializeField] BeatMap mapForRecording;
+
     private void Awake()
     {
         if (S) Destroy(S.gameObject);
@@ -42,14 +43,10 @@ public class SongManager : MonoBehaviour
 
     void Start()
     {
-        bpm = beatMap.bpm;
-        track1Notes = beatMap.track1Notes.ToArray();
-        track2Notes = beatMap.track2Notes.ToArray();
-        songSource.clip = beatMap.song;
-
-        numNotes1 = track1Notes.Length;
-        numNotes2 = track2Notes.Length;
-        secPerBeat = 60f / bpm;
+        if (!MenuManager.S)
+        {
+            SetupBeatMap(mapForRecording);
+        }
     }
 
     void Update()
@@ -62,6 +59,18 @@ public class SongManager : MonoBehaviour
             if (nextIndex2 < numNotes2 && track2Notes[nextIndex2] < songPosInBeats + notesShownInAdvance)
                 SpawnNote(track2Notes, track2StartMarker, track2ButtonMarker, track2EndMarker, ref nextIndex2);
         }
+    }
+
+    public void SetupBeatMap(BeatMap beatMap)
+    {
+        bpm = beatMap.bpm;
+        track1Notes = beatMap.track1Notes.ToArray();
+        track2Notes = beatMap.track2Notes.ToArray();
+        songSource.clip = beatMap.song;
+
+        numNotes1 = track1Notes.Length;
+        numNotes2 = track2Notes.Length;
+        secPerBeat = 60f / bpm;
     }
 
     public void StartSong()

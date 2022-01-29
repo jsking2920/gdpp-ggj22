@@ -2829,6 +2829,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1868552106}
     - target: {fileID: 6290110705019140659, guid: 14e22e39ac58dbb45a25ee286dcbd045, type: 3}
+      propertyPath: mapForRecording
+      value: 
+      objectReference: {fileID: 11400000, guid: 2d6c416f0f3e98a4598387cc5ab6df6d, type: 2}
+    - target: {fileID: 6290110705019140659, guid: 14e22e39ac58dbb45a25ee286dcbd045, type: 3}
       propertyPath: track1EndMarker
       value: 
       objectReference: {fileID: 1211403666}

@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public enum GameState { ready, playing };
+public enum GameState { setup, ready, playing };
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager S;
 
-    public GameState gameState;
+    [HideInInspector] public GameState gameState;
     private int notesPlayed;
     private int notesMissed;
 
@@ -27,11 +27,13 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        gameState = GameState.ready;
+        gameState = GameState.setup;
         scoreText.text = "Notes: 0";
-        missedNotesText.text = "Misssed: 0";
+        missedNotesText.text = "Notes Missed: 0";
         notesPlayed = 0;
         notesMissed = 0;
+        if (MenuManager.S) SongManager.S.SetupBeatMap(MenuManager.S.selectedBeatMap);
+        gameState = GameState.ready;
     }
 
     void Update()

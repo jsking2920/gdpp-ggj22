@@ -5,11 +5,22 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    public string sceneName;
+    public static MenuManager S;
 
-    public void btn_LoadScene()
+    public BeatMap selectedBeatMap;
+
+    private void Awake()
     {
-        SceneManager.LoadScene(sceneName);
+        if (S) Destroy(S.gameObject);
+        S = this;
+
+        DontDestroyOnLoad(this);
+    }
+
+    public void btn_LoadMain(BeatMap map)
+    {
+        selectedBeatMap = map;
+        SceneManager.LoadScene("Main");
     }
 
     public void btn_Quit()

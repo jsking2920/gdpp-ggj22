@@ -12,7 +12,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5957b67ad4d849f46876d14511fa1866, type: 3}
   m_Name: Song1easyMap
   m_EditorClassIdentifier: 
-  track1Notes: []
-  track2Notes: []
-  song: {fileID: 0}
-  bpm: 0
+  track1Notes:
+  - 8
+  - 10
+  - 11
+  - 12
+  - 14
+  - 15
+  - 24
+  - 26
+  - 27
+  - 28
+  - 30
+  - 31
+  - 32
+  - 34.5
+  - 37
+  - 38
+  - 39
+  track2Notes:
+  - 16
+  - 18
+  - 19
+  - 22
+  - 23
+  - 40
+  - 42
+  - 43
+  - 44
+  - 46
+  - 47
+  - 48
+  song: {fileID: 8300000, guid: a35a4680e213c29449d90fcb3c5a3ef3, type: 3}
+  bpm: 120
