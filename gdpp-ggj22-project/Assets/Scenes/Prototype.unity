@@ -475,6 +475,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2544733584495868962, guid: cd3d5d250cb92374c9fa4ce2cb6da970, type: 3}
+      propertyPath: trackID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2544733584495868962, guid: cd3d5d250cb92374c9fa4ce2cb6da970, type: 3}
       propertyPath: keyMapping
       value: 275
       objectReference: {fileID: 0}
@@ -2599,6 +2603,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2544733584495868962, guid: cd3d5d250cb92374c9fa4ce2cb6da970, type: 3}
+      propertyPath: trackID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2544733584495868962, guid: cd3d5d250cb92374c9fa4ce2cb6da970, type: 3}
       propertyPath: keyMapping
       value: 276
       objectReference: {fileID: 0}
@@ -2660,6 +2668,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6290110705019140659, guid: 14e22e39ac58dbb45a25ee286dcbd045, type: 3}
+      propertyPath: beatMap
+      value: 
+      objectReference: {fileID: 11400000, guid: 4ddd3376b3f318742a360fd802d2657c, type: 2}
+    - target: {fileID: 6290110705019140659, guid: 14e22e39ac58dbb45a25ee286dcbd045, type: 3}
       propertyPath: track1End
       value: 
       objectReference: {fileID: 1211403666}
@@ -2685,3 +2697,72 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14e22e39ac58dbb45a25ee286dcbd045, type: 3}
+--- !u!1001 &9140352132063979771
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 9140352133180373466, guid: 99107b711d09e7e4fa9278ade44ff56c, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140352133180373466, guid: 99107b711d09e7e4fa9278ade44ff56c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 68.074356
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140352133180373466, guid: 99107b711d09e7e4fa9278ade44ff56c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 39.425213
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140352133180373466, guid: 99107b711d09e7e4fa9278ade44ff56c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -103.60761
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140352133180373466, guid: 99107b711d09e7e4fa9278ade44ff56c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140352133180373466, guid: 99107b711d09e7e4fa9278ade44ff56c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140352133180373466, guid: 99107b711d09e7e4fa9278ade44ff56c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140352133180373466, guid: 99107b711d09e7e4fa9278ade44ff56c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140352133180373466, guid: 99107b711d09e7e4fa9278ade44ff56c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140352133180373466, guid: 99107b711d09e7e4fa9278ade44ff56c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140352133180373466, guid: 99107b711d09e7e4fa9278ade44ff56c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140352133180373467, guid: 99107b711d09e7e4fa9278ade44ff56c, type: 3}
+      propertyPath: quantizeEigth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9140352133180373467, guid: 99107b711d09e7e4fa9278ade44ff56c, type: 3}
+      propertyPath: buttons.Array.data[0]
+      value: 
+      objectReference: {fileID: 1005139064}
+    - target: {fileID: 9140352133180373467, guid: 99107b711d09e7e4fa9278ade44ff56c, type: 3}
+      propertyPath: buttons.Array.data[1]
+      value: 
+      objectReference: {fileID: 352112172}
+    - target: {fileID: 9140352133180373476, guid: 99107b711d09e7e4fa9278ade44ff56c, type: 3}
+      propertyPath: m_Name
+      value: BeatMapRecorder
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 99107b711d09e7e4fa9278ade44ff56c, type: 3}

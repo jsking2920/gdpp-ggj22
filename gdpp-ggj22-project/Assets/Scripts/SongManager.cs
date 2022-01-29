@@ -7,18 +7,18 @@ public class SongManager : MonoBehaviour
 {
     public static SongManager S;
 
-    [SerializeField] private float bpm;
+    [SerializeField] private BeatMap beatMap;
     [SerializeField] private AudioSource songSource;
     [SerializeField] private GameObject notePrefab;
 
-    public float[] track1Notes;
-    public float[] track2Notes;
-
+    private float bpm;
     private float songPosInSecs;
     [HideInInspector] public float songPosInBeats;
     private float secPerBeat;
     private float songStartTime;
-    
+
+    private float[] track1Notes;
+    private float[] track2Notes;
     private int numNotes1;
     private int numNotes2;
     private int nextIndex1 = 0;
@@ -40,6 +40,11 @@ public class SongManager : MonoBehaviour
 
     void Start()
     {
+        bpm = beatMap.bpm;
+        track1Notes = beatMap.track1Notes.ToArray();
+        track2Notes = beatMap.track2Notes.ToArray();
+        songSource.clip = beatMap.song;
+
         numNotes1 = track1Notes.Length;
         numNotes2 = track2Notes.Length;
         secPerBeat = 60f / bpm;

@@ -99,6 +99,7 @@ MonoBehaviour:
   defaultImage: {fileID: 21300000, guid: 035d1046182cb034dbadd9dbf1b2dc68, type: 3}
   pressedImage: {fileID: 21300000, guid: 8cd0d7ae4018f4e499989246bc2094e1, type: 3}
   keyMapping: 32
+  trackID: 1
 --- !u!61 &150381462082413408
 BoxCollider2D:
   m_ObjectHideFlags: 0
