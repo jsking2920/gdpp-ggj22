@@ -7,7 +7,7 @@ public class MenuManager : MonoBehaviour
 {
     public static MenuManager S;
 
-    public BeatMap selectedBeatMap;
+    [HideInInspector] public BeatMap selectedBeatMap;
 
     private void Awake()
     {
