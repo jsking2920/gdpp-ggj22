@@ -4,27 +4,39 @@ using UnityEngine;
 
 public class ButtonController : MonoBehaviour
 {   
-    private SpriteRenderer theSR;
-    public Sprite defaultImage;
-    public Sprite pressedImage;
+    private SpriteRenderer sr;
+    [SerializeField] private Sprite defaultImage;
+    [SerializeField] private Sprite pressedImage;
 
-    public KeyCode keyToPress;
+    private BoxCollider2D bc;
+    private BoxCollider2D[] overlappingColliders = new BoxCollider2D[1];
+    private ContactFilter2D contactFilter;
+
+    // Key that maps to this input
+    public KeyCode keyMapping;
 
     void Start()
     {
-        theSR = GetComponent<SpriteRenderer>();
+        sr = GetComponent<SpriteRenderer>();
+        bc = GetComponent<BoxCollider2D>();
+
+        contactFilter = contactFilter.NoFilter();
     }
 
-    void Update()
+    public void Pressed()
     {
-        if(Input.GetKeyDown(keyToPress))
-        {
-            theSR.sprite = defaultImage;
-        }
+        sr.sprite = defaultImage;
 
-        if(Input.GetKeyUp(keyToPress))
+        // Check to see if note is overlapping this button
+        if (bc.OverlapCollider(contactFilter, overlappingColliders) > 0)
         {
-            theSR.sprite = pressedImage;
+            GameManager.S.PlayedNote();
+            Destroy(overlappingColliders[0].gameObject);
         }
+    }
+
+    public void Unpressed()
+    {
+        sr.sprite = pressedImage;
     }
 }

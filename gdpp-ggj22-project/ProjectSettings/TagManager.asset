@@ -4,7 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Activator
+  - Button
+  - Note
   layers:
   - Default
   - TransparentFX
@@ -12,8 +13,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Notes
+  - Buttons
   - 
   - 
   - 
@@ -42,9 +43,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: buttons
+  - name: Buttons
     uniqueID: 2849970987
     locked: 0
-  - name: notes
+  - name: Notes
     uniqueID: 3778246235
     locked: 0

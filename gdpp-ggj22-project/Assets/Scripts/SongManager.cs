@@ -7,64 +7,75 @@ public class SongManager : MonoBehaviour
 {
     public static SongManager S;
 
+    [SerializeField] private float bpm;
+    [SerializeField] private AudioSource songSource;
+    [SerializeField] private GameObject notePrefab;
+
+    public float[] track1Notes;
+    public float[] track2Notes;
+
     private float songPosInSecs;
-    public float songPosInBeats;
+    [HideInInspector] public float songPosInBeats;
     private float secPerBeat;
-    private float dspTimeSong;
-
-    //beats per minute of a song
-    public float bpm;
-    //keep all the position-in-beats of notes in the song
-    public float[] notes;
-    private int numNotes;
-    //the index of the next note to be spawned
-    private int nextIndex = 0;
-    public float beatsShownInAdvance;
-
-    public AudioSource songSource;
-    public GameObject notePrefab;
+    private float songStartTime;
+    
+    private int numNotes1;
+    private int numNotes2;
+    private int nextIndex1 = 0;
+    private int nextIndex2 = 0;
+    public float notesShownInAdvance;
 
     public Transform track1Start;
     public Transform track1End;
+    public Transform track2Start;
+    public Transform track2End;
 
-    private float[] notesTest = new float[100];
+    private bool songPlaying = false;
 
     private void Awake()
     {
+        if (S) Destroy(S.gameObject);
         S = this;
     }
 
     void Start()
     {
-        numNotes = notes.Length;
-
-        //calculate how many seconds is one beat
+        numNotes1 = track1Notes.Length;
+        numNotes2 = track2Notes.Length;
         secPerBeat = 60f / bpm;
-
-        //record the time when the song starts
-        dspTimeSong = (float) AudioSettings.dspTime;
-
-        songSource.Play();
-
-        for (int i = 0; i < 100; i++)
-        {
-            notesTest[i] = (float)i;
-        }
     }
 
     void Update()
     {
-        songPosInSecs = (float)(AudioSettings.dspTime - dspTimeSong);
-
-        songPosInBeats = songPosInSecs / secPerBeat;
-
-        if (nextIndex < 100 && notesTest[nextIndex] < songPosInBeats + beatsShownInAdvance)//(nextIndex < numNotes && notes[nextIndex] < songPosInBeats + beatsShownInAdvance)
+        if (songPlaying)
         {
-            MusicNote note = Instantiate(notePrefab).GetComponent<MusicNote>();
-            note.beatOfThisNote = notesTest[nextIndex];
-            note.startPos = track1Start.position;
-            note.endPos = track1End.position;
-            nextIndex++;
+            UpdatePosition();
+            if (nextIndex1 < numNotes1 && track1Notes[nextIndex1] < songPosInBeats + notesShownInAdvance) 
+                SpawnNote(track1Notes, track1Start, track1End, ref nextIndex1);
+            if (nextIndex2 < numNotes2 && track2Notes[nextIndex2] < songPosInBeats + notesShownInAdvance)
+                SpawnNote(track2Notes, track2Start, track2End, ref nextIndex2);
         }
+    }
+
+    public void StartSong()
+    {
+        songStartTime = (float)AudioSettings.dspTime;
+        songSource.Play();
+        songPlaying = true;
+    }
+
+    private void UpdatePosition()
+    {
+        songPosInSecs = (float)(AudioSettings.dspTime - songStartTime);
+        songPosInBeats = songPosInSecs / secPerBeat;
+    }
+
+    private void SpawnNote(float[] notes, Transform start, Transform end, ref int index)
+    {
+        MusicNote note = Instantiate(notePrefab, track1Start.position, Quaternion.identity).GetComponent<MusicNote>();
+        note.beatOfThisNote = notes[index];
+        note.startPos = start.position;
+        note.endPos = end.position;
+        index++;
     }
 }
