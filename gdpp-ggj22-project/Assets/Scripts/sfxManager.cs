@@ -12,6 +12,8 @@ public class sfxManager : MonoBehaviour
     public AudioClip okayNoteSFX;
     public AudioClip badNoteSFX;
     public AudioClip missedNoteSFX;
+    public AudioClip winSound;
+    public AudioClip loseSound;
 
     private void Awake()
     {

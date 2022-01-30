@@ -50,6 +50,10 @@ public class GameManager : MonoBehaviour
         {
             HandleInput();
         }
+        else if (gameState == GameState.ready && Input.GetKeyDown(KeyCode.Return))
+        {
+            btn_StartSong();
+        }
     }
 
     private void Setup()
@@ -157,6 +161,7 @@ public class GameManager : MonoBehaviour
     {
         gameState = GameState.won;
         SongManager.S.StopSong();
+        sfxManager.S.PlaySound(sfxManager.S.winSound);
         endText.text = "Notes: " + totalNotesHit + " / " + SongManager.S.totalNotes + "\n" + "Best Streak: " + bestStreak;
         clearedText.SetActive(true);
         endScreen.SetActive(true);
@@ -166,6 +171,7 @@ public class GameManager : MonoBehaviour
     {
         gameState = GameState.lost;
         SongManager.S.StopSong();
+        sfxManager.S.PlaySound(sfxManager.S.loseSound);
         endText.text = "Notes: " + totalNotesHit + " / " + SongManager.S.totalNotes + "\n" + "Best Streak: " + bestStreak;
         clearedText.SetActive(false);
         endScreen.SetActive(true);
@@ -174,5 +180,10 @@ public class GameManager : MonoBehaviour
     public void btn_Reset()
     {
         MenuManager.S.btn_LoadMain(MenuManager.S.selectedBeatMap);
+    }
+
+    public void btn_Menu()
+    {
+        MenuManager.S.btn_Menu();
     }
 }

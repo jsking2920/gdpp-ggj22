@@ -9,6 +9,9 @@ public class MenuManager : MonoBehaviour
 
     public BeatMap selectedBeatMap;
 
+    public GameObject creditsPanel;
+    public GameObject tutorialPanel;
+
     private void Awake()
     {
         if (S) Destroy(S.gameObject);
@@ -31,5 +34,21 @@ public class MenuManager : MonoBehaviour
     public void btn_Menu()
     {
         SceneManager.LoadScene("Menu");
+    }
+
+    public void btn_Credits()
+    {
+        creditsPanel.SetActive(true);
+    }
+
+    public void btn_Tutorial()
+    {
+        tutorialPanel.SetActive(true);
+    }
+
+    public void btn_Back()
+    {
+        creditsPanel.SetActive(false);
+        tutorialPanel.SetActive(false);
     }
 }
