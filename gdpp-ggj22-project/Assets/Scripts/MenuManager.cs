@@ -7,7 +7,7 @@ public class MenuManager : MonoBehaviour
 {
     public static MenuManager S;
 
-    [HideInInspector] public BeatMap selectedBeatMap;
+    public BeatMap selectedBeatMap;
 
     private void Awake()
     {
@@ -26,5 +26,10 @@ public class MenuManager : MonoBehaviour
     public void btn_Quit()
     {
         Application.Quit();
+    }
+
+    public void btn_Menu()
+    {
+        SceneManager.LoadScene("Menu");
     }
 }

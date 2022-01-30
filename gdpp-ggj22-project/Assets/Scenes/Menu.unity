@@ -906,20 +906,8 @@ MonoBehaviour:
         m_MethodName: btn_LoadMain
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 2d6c416f0f3e98a4598387cc5ab6df6d, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 0b45be78d4025e84797c74391bc0279d, type: 2}
           m_ObjectArgumentAssemblyTypeName: BeatMap, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
