@@ -1978,7 +1978,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 0b45be78d4025e84797c74391bc0279d, type: 2}
     - target: {fileID: 9140352133180373467, guid: 99107b711d09e7e4fa9278ade44ff56c, type: 3}
       propertyPath: maxMissedNotes
-      value: 6
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 9140352133180373467, guid: 99107b711d09e7e4fa9278ade44ff56c, type: 3}
       propertyPath: notesShownInAdvance
@@ -1998,7 +1998,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9140352133180373476, guid: 99107b711d09e7e4fa9278ade44ff56c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99107b711d09e7e4fa9278ade44ff56c, type: 3}
