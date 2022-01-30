@@ -110,3 +110,4 @@ MonoBehaviour:
   song: {fileID: 8300000, guid: a3b0ccc7acc5e034895fa9a5dcf31f3b, type: 3}
   bpm: 96
   notesShownInAdvance: 6
+  maxNotesMissed: 6

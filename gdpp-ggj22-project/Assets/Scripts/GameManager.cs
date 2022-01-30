@@ -10,8 +10,9 @@ public class GameManager : MonoBehaviour
     public static GameManager S;
 
     [HideInInspector] public GameState gameState;
-    private int notesPlayed;
+    private int notesStreak;
     private int notesMissed;
+    private int maxMissedNotes;
 
     [SerializeField] private ButtonController[] buttons;
 
@@ -34,13 +35,21 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         gameState = GameState.setup;
-        scoreText.text = "Notes: 0";
-        missedNotesText.text = "Notes Missed: 0";
-        notesPlayed = 0;
-        notesMissed = 0;
 
-        if (MenuManager.S) SongManager.S.SetupBeatMap(MenuManager.S.selectedBeatMap);
-        else SongManager.S.SetupBeatMap(defaultBeatMap);
+        if (MenuManager.S)
+        {
+            SongManager.S.SetupBeatMap(MenuManager.S.selectedBeatMap);
+            maxMissedNotes = MenuManager.S.selectedBeatMap.maxNotesMissed;
+        }
+        else
+        {
+            SongManager.S.SetupBeatMap(defaultBeatMap);
+            maxMissedNotes = defaultBeatMap.maxNotesMissed;
+        }
+        scoreText.text = "Streak: 0";
+        missedNotesText.text = "Missed: 0 / " + maxMissedNotes;
+        notesStreak = 0;
+        notesMissed = 0;
 
         foreach (ButtonController button in buttons)
         {
@@ -86,37 +95,43 @@ public class GameManager : MonoBehaviour
         {
             print("Bad: early");
             sfxManager.S.PlaySoundWithRandomizedPitch(sfxManager.S.badNoteSFX);
+            notesStreak = 0;
         }
         else if (-maxOffsetOkay < offset && offset < -maxOffsetGood)
         {
             print("Okay: early");
             sfxManager.S.PlaySoundWithRandomizedPitch(sfxManager.S.okayNoteSFX);
+            notesStreak++;
         }
         else if (-maxOffsetGood < offset && offset < maxOffsetGood)
         {
             print("Good!");
             sfxManager.S.PlaySoundWithRandomizedPitch(sfxManager.S.goodNoteSFX);
             button.PlayParticles();
+            notesStreak++;
         }
         else if (maxOffsetGood< offset && offset < maxOffsetOkay)
         {
             print("Okay: late");
             sfxManager.S.PlaySoundWithRandomizedPitch(sfxManager.S.okayNoteSFX);
+            notesStreak++;
         }
         else
         {
             print("Bad: late");
             sfxManager.S.PlaySoundWithRandomizedPitch(sfxManager.S.badNoteSFX);
+            notesStreak = 0;
         }
 
-        notesPlayed++;
-        scoreText.text = "Notes: " + notesPlayed;
+        scoreText.text = "Streak: " + notesStreak;
     }
 
     public void MissedNote()
     {
+        notesStreak = 0;
+        scoreText.text = "Streak: " + notesStreak;
         notesMissed++;
-        missedNotesText.text = "Notes Missed: " + notesMissed;
+        missedNotesText.text = "Notes Missed: " + notesMissed + " / " + maxMissedNotes;
         sfxManager.S.PlaySoundWithRandomizedPitch(sfxManager.S.missedNoteSFX);
     }
 }

@@ -11,4 +11,5 @@ public class BeatMap : ScriptableObject
     public AudioClip song;
     public float bpm;
     public float notesShownInAdvance;
+    public int maxNotesMissed;
 }
