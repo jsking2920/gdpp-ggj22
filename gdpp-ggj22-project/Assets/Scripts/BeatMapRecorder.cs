@@ -30,6 +30,7 @@ public class BeatMapRecorder : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+#if UNITY_EDITOR
         if (!targetBeatMap)
         {
             targetBeatMap = ScriptableObject.CreateInstance<BeatMap>();
@@ -43,6 +44,7 @@ public class BeatMapRecorder : MonoBehaviour
         }
         targetBeatMap.song = song;
         targetBeatMap.bpm = bpm;
+#endif
     }
 
     void Update()
