@@ -89,4 +89,10 @@ public class SongManager : MonoBehaviour
         note.removePos = end.position;
         index++;
     }
+
+    public void StopSong()
+    {
+        songSource.Stop();
+        songPlaying = false;
+    }
 }

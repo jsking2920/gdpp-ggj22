@@ -25,6 +25,14 @@ public class ButtonController : MonoBehaviour
     [SerializeField] private Transform buttonPos;
     [SerializeField] private GameObject linePrefab;
 
+    [SerializeField] private Sprite perfectTextSprite;
+    [SerializeField] private Sprite okayEarlyTextSprite;
+    [SerializeField] private Sprite okayLateTextSprite;
+    [SerializeField] private Sprite badEarlyTextSprite;
+    [SerializeField] private Sprite badLateTextSprite;
+    [SerializeField] private GameObject textFXPrefab;
+    private Vector3 textFXPosition;
+
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -32,6 +40,7 @@ public class ButtonController : MonoBehaviour
         ps = GetComponent<ParticleSystem>();
 
         contactFilter = contactFilter.NoFilter();
+        textFXPosition = transform.position + new Vector3(0, 0.75f, 0);
     }
 
     public void SetupTrack()
@@ -64,8 +73,33 @@ public class ButtonController : MonoBehaviour
         sr.sprite = defaultImage;
     }
 
-    public void PlayParticles()
+    public void PlayGoodFX()
     {
         ps.Play();
+        Instantiate(textFXPrefab, textFXPosition, Quaternion.identity).GetComponent<SpriteRenderer>().sprite = perfectTextSprite;
+    }
+
+    public void PlayOkayFX(bool late)
+    {
+        if (late)
+        {
+            Instantiate(textFXPrefab, textFXPosition, Quaternion.identity).GetComponent<SpriteRenderer>().sprite = okayLateTextSprite;
+        }
+        else
+        {
+            Instantiate(textFXPrefab, textFXPosition, Quaternion.identity).GetComponent<SpriteRenderer>().sprite = okayEarlyTextSprite;
+        }
+    }
+
+    public void PlayBadFX(bool late)
+    {
+        if (late)
+        {
+            Instantiate(textFXPrefab, textFXPosition, Quaternion.identity).GetComponent<SpriteRenderer>().sprite = badLateTextSprite;
+        }
+        else
+        {
+            Instantiate(textFXPrefab, textFXPosition, Quaternion.identity).GetComponent<SpriteRenderer>().sprite = badEarlyTextSprite;
+        }
     }
 }
