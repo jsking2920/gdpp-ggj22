@@ -69,11 +69,11 @@ public class GameManager : MonoBehaviour
     {
         foreach (ButtonController button in buttons)
         {
-            if (Input.GetKeyDown(button.keyMapping))
+            if (Input.GetKeyDown(button.keyMapping) || Input.GetKeyDown(button.altKeyMapping) || Input.GetButtonDown(button.inputButtonName))
             {
                 button.Pressed();
             }
-            if (Input.GetKeyUp(button.keyMapping))
+            else if (Input.GetKeyUp(button.keyMapping) || Input.GetKeyUp(button.altKeyMapping) || Input.GetButtonUp(button.inputButtonName))
             {
                 button.Unpressed();
             }

@@ -1033,6 +1033,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2544733584495868962, guid: cd3d5d250cb92374c9fa4ce2cb6da970, type: 3}
+      propertyPath: altKeyMapping
+      value: 273
+      objectReference: {fileID: 0}
+    - target: {fileID: 2544733584495868962, guid: cd3d5d250cb92374c9fa4ce2cb6da970, type: 3}
+      propertyPath: inputButtonName
+      value: Fire3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2544733584495868962, guid: cd3d5d250cb92374c9fa4ce2cb6da970, type: 3}
+      propertyPath: inputBuuttonName
+      value: Fire3
+      objectReference: {fileID: 0}
     - target: {fileID: 3640990871113212039, guid: cd3d5d250cb92374c9fa4ce2cb6da970, type: 3}
       propertyPath: m_SortingLayer
       value: 2
@@ -1226,6 +1238,18 @@ PrefabInstance:
       propertyPath: pressedImage
       value: 
       objectReference: {fileID: 7844481162945551048, guid: 4efb0e5a1ed56c04bb11a3c2eb91c742, type: 3}
+    - target: {fileID: 2544733584495868962, guid: cd3d5d250cb92374c9fa4ce2cb6da970, type: 3}
+      propertyPath: altKeyMapping
+      value: 274
+      objectReference: {fileID: 0}
+    - target: {fileID: 2544733584495868962, guid: cd3d5d250cb92374c9fa4ce2cb6da970, type: 3}
+      propertyPath: inputButtonName
+      value: Fire2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2544733584495868962, guid: cd3d5d250cb92374c9fa4ce2cb6da970, type: 3}
+      propertyPath: inputBuuttonName
+      value: Fire2
+      objectReference: {fileID: 0}
     - target: {fileID: 2544733584495868963, guid: cd3d5d250cb92374c9fa4ce2cb6da970, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

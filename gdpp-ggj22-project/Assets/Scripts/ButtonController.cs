@@ -15,6 +15,8 @@ public class ButtonController : MonoBehaviour
 
     // Key that maps to this input
     public KeyCode keyMapping;
+    public KeyCode altKeyMapping;
+    public string inputButtonName;
     // Each button should have a unique and unchanging id for recording purposes
     [Range(1,2)] public int trackID;
 
