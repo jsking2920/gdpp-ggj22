@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2397874961327005161}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10, y: 0, z: 0}
+  m_LocalPosition: {x: -15, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2397874961443804907}
@@ -87,7 +87,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2397874962255276461}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10, y: 0, z: 0}
+  m_LocalPosition: {x: 15, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2397874961443804907}
@@ -145,9 +145,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 150381462082413411, guid: 19708a44b08aa064cb50261e840a5836, type: 3}
+      propertyPath: startPos
+      value: 
+      objectReference: {fileID: 2397874962255276462}
+    - target: {fileID: 150381462082413411, guid: 19708a44b08aa064cb50261e840a5836, type: 3}
       propertyPath: buttonPos
       value: 
       objectReference: {fileID: 606573511787851064}
+    - target: {fileID: 150381462082413411, guid: 19708a44b08aa064cb50261e840a5836, type: 3}
+      propertyPath: defaultImage
+      value: 
+      objectReference: {fileID: 945880550700071210, guid: 4efb0e5a1ed56c04bb11a3c2eb91c742, type: 3}
+    - target: {fileID: 150381462082413411, guid: 19708a44b08aa064cb50261e840a5836, type: 3}
+      propertyPath: pressedImage
+      value: 
+      objectReference: {fileID: 5879651244527979203, guid: 4efb0e5a1ed56c04bb11a3c2eb91c742, type: 3}
     - target: {fileID: 150381462082413412, guid: 19708a44b08aa064cb50261e840a5836, type: 3}
       propertyPath: m_Name
       value: Button1

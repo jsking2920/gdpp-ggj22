@@ -25,6 +25,9 @@ public class GameManager : MonoBehaviour
     {
         if (S) Destroy(S.gameObject);
         S = this;
+
+        if (MenuManager.S) SongManager.S.SetupBeatMap(MenuManager.S.selectedBeatMap);
+        else SongManager.S.SetupBeatMap(defaultBeatMap);
     }
 
     private void Start()
@@ -34,8 +37,6 @@ public class GameManager : MonoBehaviour
         missedNotesText.text = "Notes Missed: 0";
         notesPlayed = 0;
         notesMissed = 0;
-        if (MenuManager.S) SongManager.S.SetupBeatMap(MenuManager.S.selectedBeatMap);
-        else SongManager.S.SetupBeatMap(defaultBeatMap);
         gameState = GameState.ready;
     }
 

@@ -14,6 +14,7 @@ public class BeatMapRecorder : MonoBehaviour
     [Header("Create Recording")]
     public string songName;
     public int bpm;
+    public float notesShownInAdvance;
     public AudioClip song;
     // Reference to each track you want to be recorded
     public ButtonController[] buttons;
@@ -44,6 +45,7 @@ public class BeatMapRecorder : MonoBehaviour
         }
         targetBeatMap.song = song;
         targetBeatMap.bpm = bpm;
+        targetBeatMap.notesShownInAdvance = notesShownInAdvance;
 #endif
     }
 

@@ -22,7 +22,7 @@ public class SongManager : MonoBehaviour
     private int numNotes2;
     private int nextIndex1 = 0;
     private int nextIndex2 = 0;
-    public float notesShownInAdvance;
+    [HideInInspector] public float notesShownInAdvance;
 
     public Transform track1StartMarker;
     public Transform track1ButtonMarker;
@@ -54,6 +54,7 @@ public class SongManager : MonoBehaviour
     public void SetupBeatMap(BeatMap beatMap)
     {
         bpm = beatMap.bpm;
+        notesShownInAdvance = beatMap.notesShownInAdvance;
         track1Notes = beatMap.track1Notes.ToArray();
         track2Notes = beatMap.track2Notes.ToArray();
         songSource.clip = beatMap.song;

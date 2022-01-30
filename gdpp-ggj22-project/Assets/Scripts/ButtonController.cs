@@ -47,7 +47,7 @@ public class ButtonController : MonoBehaviour
 
     public void Pressed()
     {
-        sr.sprite = defaultImage;
+        sr.sprite = pressedImage;
 
         // Check to see if note is overlapping this button
         if (bc.OverlapCollider(contactFilter, overlappingColliders) > 0)
@@ -59,6 +59,6 @@ public class ButtonController : MonoBehaviour
 
     public void Unpressed()
     {
-        sr.sprite = pressedImage;
+        sr.sprite = defaultImage;
     }
 }

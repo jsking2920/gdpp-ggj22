@@ -46,6 +46,9 @@ TagManager:
   - name: Background
     uniqueID: 3784018131
     locked: 0
+  - name: Tracks
+    uniqueID: 2989568427
+    locked: 0
   - name: Buttons
     uniqueID: 2849970987
     locked: 0

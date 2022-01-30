@@ -45,3 +45,4 @@ MonoBehaviour:
   - 48
   song: {fileID: 8300000, guid: a35a4680e213c29449d90fcb3c5a3ef3, type: 3}
   bpm: 120
+  notesShownInAdvance: 8
