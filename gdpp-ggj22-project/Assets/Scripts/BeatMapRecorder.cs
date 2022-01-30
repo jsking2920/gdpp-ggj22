@@ -15,12 +15,14 @@ public class BeatMapRecorder : MonoBehaviour
     public string songName;
     public int bpm;
     public float notesShownInAdvance;
+    public int maxMissedNotes;
     public AudioClip song;
     // Reference to each track you want to be recorded
     public ButtonController[] buttons;
 
     public bool quantizeEigth;
     public bool quantizeTriplet;
+    public bool quantizeQuarter;
 
     private void Awake()
     {
@@ -46,6 +48,7 @@ public class BeatMapRecorder : MonoBehaviour
         targetBeatMap.song = song;
         targetBeatMap.bpm = bpm;
         targetBeatMap.notesShownInAdvance = notesShownInAdvance;
+        targetBeatMap.maxNotesMissed = maxMissedNotes;
 #endif
     }
 
@@ -90,6 +93,10 @@ public class BeatMapRecorder : MonoBehaviour
         else if (quantizeTriplet)
         {
             return Mathf.Round(rawInputBeat * 3f) * (1f / 3f);
+        }
+        else if (quantizeQuarter)
+        {
+            return Mathf.Round(rawInputBeat);
         }
         else
         {

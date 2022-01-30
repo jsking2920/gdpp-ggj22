@@ -26,9 +26,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private BeatMap defaultBeatMap;
 
-    [Header("Score Paremeters")]
-    [SerializeField] private float maxOffsetGood = 0.06f;
-    [SerializeField] private float maxOffsetOkay = 0.13f;
+    private float maxOffsetGood = 0.06f;
+    private float maxOffsetOkay = 0.13f;
 
     private int totalNotesHit = 0;
 
