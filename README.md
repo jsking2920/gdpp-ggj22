@@ -1,13 +1,13 @@
 # Wolf
-A Unity game created for the 2022 Pittsburgh Global Game Jam and 53-471 at CMU
+A Unity game created for the 2022 Pittsburgh Global Game Jam and 53-471 at CMU <br>
 https://globalgamejam.org/2022/games/wolf-3
 
-Carol He - Production, Art
-Jonathan Fischer - Music, Sound
-Nina Gao - UI/UX, Art
-Scott King - Programming
-Yu Xi Lee - Art
-Zheng Wang - Programming
+Carol He - Production, Art <br>
+Jonathan Fischer - Music, Sound <br>
+Nina Gao - UI/UX, Art <br>
+Scott King - Programming <br>
+Yu Xi Lee - Art <br>
+Zheng Wang - Programming <br>
 
 Attributions
 -------------------------------------------------
