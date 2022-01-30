@@ -28,13 +28,11 @@ public class ButtonController : MonoBehaviour
         bc = GetComponent<BoxCollider2D>();
 
         contactFilter = contactFilter.NoFilter();
-
-        trackSR.transform.position = buttonPos.position;
-        SetupTrack();
     }
 
-    private void SetupTrack()
+    public void SetupTrack()
     {
+        trackSR.transform.position = buttonPos.position;
         trackSR.size = new Vector2(Mathf.Abs(trackSR.transform.position.x - startPos.position.x), 1);
 
         float step = trackSR.size.x / SongManager.S.notesShownInAdvance;
