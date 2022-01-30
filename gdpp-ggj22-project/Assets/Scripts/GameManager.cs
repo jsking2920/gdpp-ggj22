@@ -21,6 +21,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private BeatMap defaultBeatMap;
 
+    [Header("Score Paremeters")]
+    [SerializeField] private float maxOffsetGood = 0.06f;
+    [SerializeField] private float maxOffsetOkay = 0.13f;
+
     void Awake()
     {
         if (S) Destroy(S.gameObject);
@@ -74,8 +78,37 @@ public class GameManager : MonoBehaviour
         startButton.SetActive(false);
     }
 
-    public void PlayedNote()
+    // Positive offset means the note was played late
+    public void PlayedNote(ButtonController button, float offset)
     {
+        
+        if (offset < -maxOffsetOkay)
+        {
+            print("Bad: early");
+            sfxManager.S.PlaySoundWithRandomizedPitch(sfxManager.S.badNoteSFX);
+        }
+        else if (-maxOffsetOkay < offset && offset < -maxOffsetGood)
+        {
+            print("Okay: early");
+            sfxManager.S.PlaySoundWithRandomizedPitch(sfxManager.S.okayNoteSFX);
+        }
+        else if (-maxOffsetGood < offset && offset < maxOffsetGood)
+        {
+            print("Good!");
+            sfxManager.S.PlaySoundWithRandomizedPitch(sfxManager.S.goodNoteSFX);
+            button.PlayParticles();
+        }
+        else if (maxOffsetGood< offset && offset < maxOffsetOkay)
+        {
+            print("Okay: late");
+            sfxManager.S.PlaySoundWithRandomizedPitch(sfxManager.S.okayNoteSFX);
+        }
+        else
+        {
+            print("Bad: late");
+            sfxManager.S.PlaySoundWithRandomizedPitch(sfxManager.S.badNoteSFX);
+        }
+
         notesPlayed++;
         scoreText.text = "Notes: " + notesPlayed;
     }
@@ -84,5 +117,6 @@ public class GameManager : MonoBehaviour
     {
         notesMissed++;
         missedNotesText.text = "Notes Missed: " + notesMissed;
+        sfxManager.S.PlaySoundWithRandomizedPitch(sfxManager.S.missedNoteSFX);
     }
 }

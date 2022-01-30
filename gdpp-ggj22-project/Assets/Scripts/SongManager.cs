@@ -8,7 +8,8 @@ public class SongManager : MonoBehaviour
     public static SongManager S;
 
     [SerializeField] private AudioSource songSource;
-    [SerializeField] private GameObject notePrefab;
+    [SerializeField] private GameObject blackNotePrefab;
+    [SerializeField] private GameObject whiteNotePrefab;
 
     private float bpm;
     private float songPosInSecs;
@@ -45,9 +46,9 @@ public class SongManager : MonoBehaviour
         {
             UpdatePosition();
             if (nextIndex1 < numNotes1 && track1Notes[nextIndex1] < songPosInBeats + notesShownInAdvance) 
-                SpawnNote(track1Notes, track1StartMarker, track1ButtonMarker, track1EndMarker, ref nextIndex1);
+                SpawnNote(track1Notes, whiteNotePrefab, track1StartMarker, track1ButtonMarker, track1EndMarker, ref nextIndex1);
             if (nextIndex2 < numNotes2 && track2Notes[nextIndex2] < songPosInBeats + notesShownInAdvance)
-                SpawnNote(track2Notes, track2StartMarker, track2ButtonMarker, track2EndMarker, ref nextIndex2);
+                SpawnNote(track2Notes, blackNotePrefab, track2StartMarker, track2ButtonMarker, track2EndMarker, ref nextIndex2);
         }
     }
 
@@ -79,7 +80,7 @@ public class SongManager : MonoBehaviour
         songPosInBeats = songPosInSecs / secPerBeat;
     }
 
-    private void SpawnNote(float[] notes, Transform start, Transform button, Transform end, ref int index)
+    private void SpawnNote(float[] notes, GameObject notePrefab, Transform start, Transform button, Transform end, ref int index)
     {
         MusicNote note = Instantiate(notePrefab, start.position, Quaternion.identity).GetComponent<MusicNote>();
         note.beatOfThisNote = notes[index];

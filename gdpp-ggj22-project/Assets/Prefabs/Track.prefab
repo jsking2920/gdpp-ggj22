@@ -164,6 +164,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button1
       objectReference: {fileID: 0}
+    - target: {fileID: 2394664742129110740, guid: 19708a44b08aa064cb50261e840a5836, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394664742129110740, guid: 19708a44b08aa064cb50261e840a5836, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1c47b964a38af494b9fc4da9bdbc08a1, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19708a44b08aa064cb50261e840a5836, type: 3}
 --- !u!4 &2544733584495868963 stripped

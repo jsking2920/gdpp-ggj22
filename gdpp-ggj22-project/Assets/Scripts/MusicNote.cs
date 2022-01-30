@@ -13,8 +13,10 @@ public class MusicNote : MonoBehaviour
 
     private float notesShownInAdvance;
 
-    private float missedNoteBufferInBeats = 0.25f;
+    private float missedNoteBufferInBeats = 0.5f;
     private bool firedMissedFunction = false;
+
+    [SerializeField] private SpriteRenderer sr;
 
     private void Start()
     {
@@ -29,13 +31,22 @@ public class MusicNote : MonoBehaviour
 
         if (!firedMissedFunction && beatOfThisNote - (SongManager.S.songPosInBeats - missedNoteBufferInBeats) < 0f)
             MissedNote();
-        if (interpolationVal > 0.6f)
-            Destroy(gameObject);
     }
 
     private void MissedNote()
     {
         firedMissedFunction = true;
         GameManager.S.MissedNote();
+        Destroy(gameObject, 0.5f);
+        StartCoroutine(FadeOut());
+    }
+
+    private IEnumerator FadeOut()
+    {
+        while (true)
+        {
+            sr.color -= new Color(0, 0, 0, 0.25f);
+            yield return new WaitForSeconds(0.1f);
+        }
     }
 }

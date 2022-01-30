@@ -7,6 +7,7 @@ public class ButtonController : MonoBehaviour
     private SpriteRenderer sr;
     [SerializeField] private Sprite defaultImage;
     [SerializeField] private Sprite pressedImage;
+    private ParticleSystem ps;
 
     private BoxCollider2D bc;
     private BoxCollider2D[] overlappingColliders = new BoxCollider2D[1];
@@ -26,6 +27,7 @@ public class ButtonController : MonoBehaviour
     {
         sr = GetComponent<SpriteRenderer>();
         bc = GetComponent<BoxCollider2D>();
+        ps = GetComponent<ParticleSystem>();
 
         contactFilter = contactFilter.NoFilter();
     }
@@ -47,10 +49,10 @@ public class ButtonController : MonoBehaviour
     {
         sr.sprite = pressedImage;
 
-        // Check to see if note is overlapping this button
         if (bc.OverlapCollider(contactFilter, overlappingColliders) > 0)
         {
-            GameManager.S.PlayedNote();
+            Collider2D collider = overlappingColliders[0];
+            GameManager.S.PlayedNote(this, SongManager.S.songPosInBeats - collider.transform.GetComponent<MusicNote>().beatOfThisNote);
             Destroy(overlappingColliders[0].gameObject);
         }
     }
@@ -58,5 +60,10 @@ public class ButtonController : MonoBehaviour
     public void Unpressed()
     {
         sr.sprite = defaultImage;
+    }
+
+    public void PlayParticles()
+    {
+        ps.Play();
     }
 }
