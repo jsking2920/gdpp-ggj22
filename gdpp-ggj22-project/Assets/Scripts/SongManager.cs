@@ -24,6 +24,7 @@ public class SongManager : MonoBehaviour
     private int nextIndex1 = 0;
     private int nextIndex2 = 0;
     [HideInInspector] public float notesShownInAdvance;
+    public int totalNotes;
 
     public Transform track1StartMarker;
     public Transform track1ButtonMarker;
@@ -49,6 +50,10 @@ public class SongManager : MonoBehaviour
                 SpawnNote(track1Notes, whiteNotePrefab, track1StartMarker, track1ButtonMarker, track1EndMarker, ref nextIndex1);
             if (nextIndex2 < numNotes2 && track2Notes[nextIndex2] < songPosInBeats + notesShownInAdvance)
                 SpawnNote(track2Notes, blackNotePrefab, track2StartMarker, track2ButtonMarker, track2EndMarker, ref nextIndex2);
+            if (songPosInSecs >= songSource.clip.length)
+            {
+                GameManager.S.ClearedSong();
+            }
         }
     }
 
@@ -63,6 +68,8 @@ public class SongManager : MonoBehaviour
         numNotes1 = track1Notes.Length;
         numNotes2 = track2Notes.Length;
         secPerBeat = 60f / bpm;
+
+        totalNotes = track1Notes.Length + track2Notes.Length;
     }
 
     public void StartSong()
@@ -94,5 +101,9 @@ public class SongManager : MonoBehaviour
     {
         songSource.Stop();
         songPlaying = false;
+        foreach (GameObject note in GameObject.FindGameObjectsWithTag("Note"))
+        {
+            Destroy(note);
+        }
     }
 }

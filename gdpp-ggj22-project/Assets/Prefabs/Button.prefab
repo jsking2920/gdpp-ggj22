@@ -134,11 +134,19 @@ MonoBehaviour:
   defaultImage: {fileID: 5879651244527979203, guid: 4efb0e5a1ed56c04bb11a3c2eb91c742, type: 3}
   pressedImage: {fileID: 945880550700071210, guid: 4efb0e5a1ed56c04bb11a3c2eb91c742, type: 3}
   keyMapping: 276
+  altKeyMapping: 0
+  inputButtonName: 
   trackID: 1
   trackSR: {fileID: 1423581113531285446}
   startPos: {fileID: 0}
   buttonPos: {fileID: 0}
   linePrefab: {fileID: 8974679507674372337, guid: 10d354a734cb70b42a2f581f6fb0c080, type: 3}
+  perfectTextSprite: {fileID: 0}
+  okayEarlyTextSprite: {fileID: 0}
+  okayLateTextSprite: {fileID: 0}
+  badEarlyTextSprite: {fileID: 0}
+  badLateTextSprite: {fileID: 0}
+  textFXPrefab: {fileID: 0}
 --- !u!61 &150381462082413408
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5066,7 +5074,7 @@ SpriteRenderer:
   m_SortingLayerID: -516721061
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1009d8a0c7231544a95a16268afad4eb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 53399a05602333241bb27e2e0b9a9d78, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.3764706}
   m_FlipX: 0
   m_FlipY: 0

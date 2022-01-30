@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public enum GameState { setup, ready, playing, lost };
+public enum GameState { setup, ready, playing, won, lost };
 
 public class GameManager : MonoBehaviour
 {
@@ -13,10 +13,14 @@ public class GameManager : MonoBehaviour
     private int notesStreak;
     private int notesMissed;
     private int maxMissedNotes;
+    private int bestStreak;
 
     [SerializeField] private ButtonController[] buttons;
 
     [SerializeField] private GameObject startButton;
+    [SerializeField] private GameObject endScreen;
+    [SerializeField] private GameObject clearedText;
+    [SerializeField] private TextMeshProUGUI endText;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI missedNotesText;
 
@@ -25,6 +29,8 @@ public class GameManager : MonoBehaviour
     [Header("Score Paremeters")]
     [SerializeField] private float maxOffsetGood = 0.06f;
     [SerializeField] private float maxOffsetOkay = 0.13f;
+
+    private int totalNotesHit = 0;
 
     void Awake()
     {
@@ -35,7 +41,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         gameState = GameState.setup;
-        SetupOnce();
+        Setup();
     }
 
     void Update()
@@ -46,18 +52,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void SetupOnce()
+    private void Setup()
     {
-
         foreach (ButtonController button in buttons)
         {
             button.SetupTrack();
         }
-        Setup();
-    }
 
-    private void Setup()
-    {
         if (MenuManager.S)
         {
             SongManager.S.SetupBeatMap(MenuManager.S.selectedBeatMap);
@@ -72,6 +73,8 @@ public class GameManager : MonoBehaviour
         missedNotesText.text = "Missed: 0 / " + maxMissedNotes;
         notesStreak = 0;
         notesMissed = 0;
+        bestStreak = 0;
+        endScreen.SetActive(false);
     }
 
     private void HandleInput()
@@ -102,40 +105,37 @@ public class GameManager : MonoBehaviour
         
         if (offset < -maxOffsetOkay)
         {
-            print("Bad: early");
-            sfxManager.S.PlaySoundWithRandomizedPitch(sfxManager.S.badNoteSFX);
+            sfxManager.S.PlaySound(sfxManager.S.badNoteSFX);
             button.PlayBadFX(false);
             notesStreak = 0;
         }
         else if (-maxOffsetOkay < offset && offset < -maxOffsetGood)
         {
-            print("Okay: early");
-            sfxManager.S.PlaySoundWithRandomizedPitch(sfxManager.S.okayNoteSFX);
+            sfxManager.S.PlaySound(sfxManager.S.okayNoteSFX);
             button.PlayOkayFX(false);
             notesStreak++;
         }
         else if (-maxOffsetGood < offset && offset < maxOffsetGood)
         {
-            print("Good!");
-            sfxManager.S.PlaySoundWithRandomizedPitch(sfxManager.S.goodNoteSFX);
+            sfxManager.S.PlaySound(sfxManager.S.goodNoteSFX);
             button.PlayGoodFX();
             notesStreak++;
         }
         else if (maxOffsetGood< offset && offset < maxOffsetOkay)
         {
-            print("Okay: late");
-            sfxManager.S.PlaySoundWithRandomizedPitch(sfxManager.S.okayNoteSFX);
+            sfxManager.S.PlaySound(sfxManager.S.okayNoteSFX);
             button.PlayOkayFX(true);
             notesStreak++;
         }
         else
         {
-            print("Bad: late");
-            sfxManager.S.PlaySoundWithRandomizedPitch(sfxManager.S.badNoteSFX);
+            sfxManager.S.PlaySound(sfxManager.S.badNoteSFX);
             button.PlayBadFX(true);
             notesStreak = 0;
         }
 
+        totalNotesHit++;
+        if (notesStreak > bestStreak) bestStreak = notesStreak;
         scoreText.text = "Streak: " + notesStreak;
     }
 
@@ -145,7 +145,7 @@ public class GameManager : MonoBehaviour
         scoreText.text = "Streak: " + notesStreak;
         notesMissed++;
         missedNotesText.text = "Missed: " + notesMissed + " / " + maxMissedNotes;
-        sfxManager.S.PlaySoundWithRandomizedPitch(sfxManager.S.missedNoteSFX);
+        sfxManager.S.PlaySound(sfxManager.S.missedNoteSFX);
 
         if (notesMissed == maxMissedNotes)
         {
@@ -153,10 +153,26 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void ClearedSong()
+    {
+        gameState = GameState.won;
+        SongManager.S.StopSong();
+        endText.text = "Notes: " + totalNotesHit + " / " + SongManager.S.totalNotes + "\n" + "Best Streak: " + bestStreak;
+        clearedText.SetActive(true);
+        endScreen.SetActive(true);
+    }
+
     private void GameLost()
     {
         gameState = GameState.lost;
         SongManager.S.StopSong();
-        startButton.SetActive(true);
+        endText.text = "Notes: " + totalNotesHit + " / " + SongManager.S.totalNotes + "\n" + "Best Streak: " + bestStreak;
+        clearedText.SetActive(false);
+        endScreen.SetActive(true);
+    }
+
+    public void btn_Reset()
+    {
+        MenuManager.S.btn_LoadMain(MenuManager.S.selectedBeatMap);
     }
 }
