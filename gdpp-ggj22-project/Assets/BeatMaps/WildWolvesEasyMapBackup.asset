@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5957b67ad4d849f46876d14511fa1866, type: 3}
-  m_Name: WildWolvesEasyMap
+  m_Name: WildWolvesEasyMapBackup
   m_EditorClassIdentifier: 
   track1Notes:
   - 6

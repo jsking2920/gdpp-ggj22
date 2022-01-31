@@ -49,7 +49,6 @@ MonoBehaviour:
   buttonPos: {x: 0, y: 0}
   removePos: {x: 0, y: 0}
   beatOfThisNote: 0
-  sr: {fileID: 0}
 --- !u!61 &-9194861522084632634
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -63,10 +62,10 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.009593956, y: -0.03957407}
+  m_Offset: {x: 0.021578372, y: -0.029518493}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.52575946, y: 0.49094814}
+    pivot: {x: 0.46797666, y: 0.47284448}
     oldSize: {x: 0.468, y: 0.478}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -74,7 +73,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.37091464, y: 0.33841097}
+  m_Size: {x: 0.36488122, y: 0.35852218}
   m_EdgeRadius: 0
 --- !u!212 &2984606316337073708
 SpriteRenderer:

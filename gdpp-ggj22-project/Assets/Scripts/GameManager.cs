@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private BeatMap defaultBeatMap;
 
-    private float maxOffsetGood = 0.06f;
+    private float maxOffsetGood = 0.07f;
     private float maxOffsetOkay = 0.13f;
 
     void Awake()
