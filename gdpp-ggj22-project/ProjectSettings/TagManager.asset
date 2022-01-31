@@ -55,3 +55,6 @@ TagManager:
   - name: Notes
     uniqueID: 3778246235
     locked: 0
+  - name: Foreground
+    uniqueID: 3453729961
+    locked: 0

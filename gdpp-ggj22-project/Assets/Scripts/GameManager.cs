@@ -10,17 +10,19 @@ public class GameManager : MonoBehaviour
     public static GameManager S;
 
     [HideInInspector] public GameState gameState;
+
     private int notesStreak;
     private int notesMissed;
     private int maxMissedNotes;
     private int bestStreak;
+    private int totalNotesHit = 0;
 
     [SerializeField] private ButtonController[] buttons;
 
-    [SerializeField] private GameObject startButton;
     [SerializeField] private GameObject endScreen;
     [SerializeField] private GameObject clearedText;
     [SerializeField] private TextMeshProUGUI endText;
+
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI missedNotesText;
 
@@ -28,8 +30,6 @@ public class GameManager : MonoBehaviour
 
     private float maxOffsetGood = 0.06f;
     private float maxOffsetOkay = 0.13f;
-
-    private int totalNotesHit = 0;
 
     void Awake()
     {
@@ -45,14 +45,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (gameState == GameState.playing)
-        {
-            HandleInput();
-        }
-        else if (gameState == GameState.ready && Input.GetKeyDown(KeyCode.Return))
-        {
-            btn_StartSong();
-        }
+        if (gameState == GameState.playing) HandleInput();
     }
 
     private void Setup()
@@ -78,6 +71,21 @@ public class GameManager : MonoBehaviour
         notesMissed = 0;
         bestStreak = 0;
         endScreen.SetActive(false);
+        gameState = GameState.ready;
+
+        StartCoroutine(IntroDelay());
+    }
+
+    private IEnumerator IntroDelay()
+    {
+        yield return new WaitForSeconds(1f);
+        StartSong();
+    }
+
+    public void StartSong()
+    {
+        SongManager.S.StartSong();
+        gameState = GameState.playing;
     }
 
     private void HandleInput()
@@ -95,17 +103,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void btn_StartSong()
-    {
-        SongManager.S.StartSong();
-        gameState = GameState.playing;
-        startButton.SetActive(false);
-    }
-
     // Positive offset means the note was played late
     public void PlayedNote(ButtonController button, float offset)
     {
-        
         if (offset < -maxOffsetOkay)
         {
             sfxManager.S.PlaySound(sfxManager.S.badNoteSFX);
@@ -178,11 +178,13 @@ public class GameManager : MonoBehaviour
 
     public void btn_Reset()
     {
+        sfxManager.S.PlaySound(sfxManager.S.uiClick);
         MenuManager.S.btn_LoadMain(MenuManager.S.selectedBeatMap);
     }
 
     public void btn_Menu()
     {
+        sfxManager.S.PlaySound(sfxManager.S.uiClick);
         MenuManager.S.btn_Menu();
     }
 }

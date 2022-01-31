@@ -11,7 +11,7 @@ public class BeatMapRecorder : MonoBehaviour
     [Header("Edit Recording")]
     [SerializeField][Tooltip("Record over this beat mep destructively")] BeatMap targetBeatMap;
 
-    [Header("Create Recording")]
+    [Header("Beatmap Info")]
     public string songName;
     public int bpm;
     public float notesShownInAdvance;
@@ -20,9 +20,10 @@ public class BeatMapRecorder : MonoBehaviour
     // Reference to each track you want to be recorded
     public ButtonController[] buttons;
 
-    public bool quantizeEigth;
-    public bool quantizeTriplet;
     public bool quantizeQuarter;
+    public bool quantizeEigth;
+    public bool quantizeSixteenth;
+    public bool quantizeTriplet;
 
     private void Awake()
     {
@@ -30,7 +31,6 @@ public class BeatMapRecorder : MonoBehaviour
         S = this;
     }
 
-    // Start is called before the first frame update
     void Start()
     {
 #if UNITY_EDITOR
@@ -86,21 +86,10 @@ public class BeatMapRecorder : MonoBehaviour
 
     private float Quantize(float rawInputBeat)
     {
-        if (quantizeEigth)
-        {
-            return Mathf.Round(rawInputBeat * 2f) * 0.5f;
-        }
-        else if (quantizeTriplet)
-        {
-            return Mathf.Round(rawInputBeat * 3f) * (1f / 3f);
-        }
-        else if (quantizeQuarter)
-        {
-            return Mathf.Round(rawInputBeat);
-        }
-        else
-        {
-            return rawInputBeat;
-        }
+        if (quantizeQuarter) return Mathf.Round(rawInputBeat);
+        else if (quantizeEigth) return Mathf.Round(rawInputBeat * 2f) * 0.5f;
+        else if (quantizeSixteenth) return Mathf.Round(rawInputBeat * 4f) * 0.25f;
+        else if (quantizeTriplet) return Mathf.Round(rawInputBeat * 3f) * (1f / 3f);
+        else return rawInputBeat;
     }
 }

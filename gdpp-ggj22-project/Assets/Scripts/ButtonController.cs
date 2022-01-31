@@ -7,7 +7,10 @@ public class ButtonController : MonoBehaviour
     private SpriteRenderer sr;
     [SerializeField] private Sprite defaultImage;
     [SerializeField] private Sprite pressedImage;
+
     private ParticleSystem ps;
+    [SerializeField] private GameObject floatingTextPrefab;
+    private Vector3 textFXPosition;
 
     private BoxCollider2D bc;
     private BoxCollider2D[] overlappingColliders = new BoxCollider2D[1];
@@ -17,6 +20,7 @@ public class ButtonController : MonoBehaviour
     public KeyCode keyMapping;
     public KeyCode altKeyMapping;
     public string inputButtonName;
+
     // Each button should have a unique and unchanging id for recording purposes
     [Range(1,2)] public int trackID;
 
@@ -25,14 +29,6 @@ public class ButtonController : MonoBehaviour
     [SerializeField] private Transform buttonPos;
     [SerializeField] private GameObject linePrefab;
 
-    [SerializeField] private Sprite perfectTextSprite;
-    [SerializeField] private Sprite okayEarlyTextSprite;
-    [SerializeField] private Sprite okayLateTextSprite;
-    [SerializeField] private Sprite badEarlyTextSprite;
-    [SerializeField] private Sprite badLateTextSprite;
-    [SerializeField] private GameObject textFXPrefab;
-    private Vector3 textFXPosition;
-
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -40,7 +36,7 @@ public class ButtonController : MonoBehaviour
         ps = GetComponent<ParticleSystem>();
 
         contactFilter = contactFilter.NoFilter();
-        textFXPosition = transform.position + new Vector3(0, 0.75f, 0);
+        textFXPosition = transform.position + new Vector3(0, 0.9f, 0);
     }
 
     public void SetupTrack()
@@ -60,6 +56,7 @@ public class ButtonController : MonoBehaviour
     {
         sr.sprite = pressedImage;
 
+        // Creates problems if notes are too close together
         if (bc.OverlapCollider(contactFilter, overlappingColliders) > 0)
         {
             Collider2D collider = overlappingColliders[0];
@@ -76,30 +73,23 @@ public class ButtonController : MonoBehaviour
     public void PlayGoodFX()
     {
         ps.Play();
-        Instantiate(textFXPrefab, textFXPosition, Quaternion.identity).GetComponent<SpriteRenderer>().sprite = perfectTextSprite;
+        CreateTextFX("Perfect");
     }
 
     public void PlayOkayFX(bool late)
     {
-        if (late)
-        {
-            Instantiate(textFXPrefab, textFXPosition, Quaternion.identity).GetComponent<SpriteRenderer>().sprite = okayLateTextSprite;
-        }
-        else
-        {
-            Instantiate(textFXPrefab, textFXPosition, Quaternion.identity).GetComponent<SpriteRenderer>().sprite = okayEarlyTextSprite;
-        }
+        if (late) CreateTextFX("Late");
+        else CreateTextFX("Early");
     }
 
     public void PlayBadFX(bool late)
     {
-        if (late)
-        {
-            Instantiate(textFXPrefab, textFXPosition, Quaternion.identity).GetComponent<SpriteRenderer>().sprite = badLateTextSprite;
-        }
-        else
-        {
-            Instantiate(textFXPrefab, textFXPosition, Quaternion.identity).GetComponent<SpriteRenderer>().sprite = badEarlyTextSprite;
-        }
+        if (late) CreateTextFX("Very Late");
+        else CreateTextFX("Very Early");
+    }
+
+    private void CreateTextFX(string text)
+    {
+        Instantiate(floatingTextPrefab, textFXPosition, Quaternion.identity).GetComponent<TextFX>().SetText(text);
     }
 }

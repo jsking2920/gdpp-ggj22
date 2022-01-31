@@ -14,11 +14,14 @@ public class sfxManager : MonoBehaviour
     public AudioClip missedNoteSFX;
     public AudioClip winSound;
     public AudioClip loseSound;
+    public AudioClip uiClick;
 
     private void Awake()
     {
         if (S) Destroy(S.gameObject);
         S = this;
+
+        DontDestroyOnLoad(this);
     }
 
     void Start()

@@ -8,19 +8,20 @@ public class MusicNote : MonoBehaviour
     [HideInInspector] public Vector2 startPos;
     [HideInInspector] public Vector2 buttonPos;
     [HideInInspector] public Vector2 removePos;
+
     private float interpolationVal;
     [HideInInspector] public float beatOfThisNote;
-
     private float notesShownInAdvance;
 
     private float missedNoteBufferInBeats = 0.5f;
     private bool firedMissedFunction = false;
 
-    [SerializeField] private SpriteRenderer sr;
+    private SpriteRenderer sr;
 
     private void Start()
     {
         notesShownInAdvance = SongManager.S.notesShownInAdvance;
+        sr = GetComponent<SpriteRenderer>();
     }
 
     void Update()
